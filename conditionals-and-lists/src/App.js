@@ -85,6 +85,11 @@ const App = (props) => {
 
   }
 
+  let personsDiv = null;
+
+  if (showState === true)
+    personsDiv = PersonsDiv();
+
   return (
     <div className="App">
       {/*
@@ -93,11 +98,8 @@ const App = (props) => {
       */}
 
       <button onClick={togglePersonsHandler}>Toggle Persons</button>
-
-      {showState === true ?
-
-        <PersonsDiv key="Teste2"></PersonsDiv>
-        : null}
+      
+      {personsDiv}
 
       <p>{otherState}</p>
 
