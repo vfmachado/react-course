@@ -68,7 +68,7 @@ const App = (props) => {
   const PersonsDiv = () => {
 
     return (
-      <div>
+      <div key="aqui...">
         {personState.persons.map((person, index) => {
           return <Person
             key={person.id}
@@ -96,7 +96,7 @@ const App = (props) => {
 
       {showState === true ?
 
-        <PersonsDiv></PersonsDiv>
+        <PersonsDiv key="Teste2"></PersonsDiv>
         : null}
 
       <p>{otherState}</p>
