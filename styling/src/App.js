@@ -3,12 +3,16 @@ import './App.css';
 
 import Person from './Person/Person';
 
+import Radium, {StyleRoot} from 'radium'
+
 const btnStyle = {
   backgroundColor: 'white',
   color: 'red',
   padding: '10px',
-  width: '100px'
+  width: '200px',
+  cursor: 'pointer'
 };
+
 
 
 const App = (props) => {
@@ -72,10 +76,23 @@ const App = (props) => {
 
   }
 
+  const btnToggleStyle = {
+    backgroundColor: 'green',
+    color: 'white',
+    fontSize: '16px',
+    padding: '10px',
+    width: '200px',
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: 'lightgreen',
+      color: 'black'
+    }
+  };
+
   const PersonsDiv = () => {
 
     return (
-      <div key="aqui...">
+      <div>
         {personState.persons.map((person, index) => {
           return <Person
             key={person.id}
@@ -94,17 +111,27 @@ const App = (props) => {
 
   let personsDiv = null;
 
-  if (showState === true)
+  if (showState === true) {
     personsDiv = PersonsDiv();
+    btnToggleStyle.backgroundColor = "red";
+    btnToggleStyle[':hover'].backgroundColor = 'pink'
+    //btnToggleStyle.color = "black";
+  } 
+
+  let classes = ['red', 'bold'].join(' ');
 
   return (
+    <StyleRoot>
     <div className="App">
       {/*
       <Person name="Vinicius" age="28"></Person>
       <Person name="Cristiana" age="XX">Married with Vinicius</Person>
       */}
 
-      <button onClick={togglePersonsHandler}>Toggle Persons</button>
+      <br></br>
+      <h1>Learning React</h1>
+      <p className={classes}>React is amazing</p>
+      <button style={btnToggleStyle} onClick={togglePersonsHandler}>Toggle Persons</button>
       
       {personsDiv}
 
@@ -113,7 +140,8 @@ const App = (props) => {
       <button style={btnStyle} onClick={buttonClickHandler}>Click me</button>
 
     </div>
+    </StyleRoot>
   );
 }
 
-export default App;
+export default Radium(App);
