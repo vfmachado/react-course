@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import './App.css';
 
 import Person from './Person/Person';
 
 //import Radium, {StyleRoot} from 'radium'
 
+/*
 const btnStyle = {
   backgroundColor: 'white',
   color: 'red',
@@ -12,8 +14,30 @@ const btnStyle = {
   width: '200px',
   cursor: 'pointer'
 };
+*/
 
+const StyledButton = styled.button`
+  background-color: white;
+  color: red;
+  padding: 10px;
+  width: 200px;
+  cursor: pointer;
+`;
 
+const StyledToggleButton = styled.button`
+
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  width: 200px;
+  cursor: pointer;
+  :hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color: black;
+  }
+  
+  `;
 
 const App = (props) => {
 
@@ -76,6 +100,7 @@ const App = (props) => {
 
   }
 
+/*
   const btnToggleStyle = {
     backgroundColor: 'green',
     color: 'white',
@@ -88,7 +113,7 @@ const App = (props) => {
       color: 'black'
     }
   };
-
+*/
   const PersonsDiv = () => {
 
     return (
@@ -113,8 +138,8 @@ const App = (props) => {
 
   if (showState === true) {
     personsDiv = PersonsDiv();
-    btnToggleStyle.backgroundColor = "red";
-    btnToggleStyle[':hover'].backgroundColor = 'pink'
+    //btnToggleStyle.backgroundColor = "red";
+    //btnToggleStyle[':hover'].backgroundColor = 'pink'
     //btnToggleStyle.color = "black";
   } 
 
@@ -132,13 +157,24 @@ const App = (props) => {
       <br></br>
       <h1>Learning React</h1>
       <p className={classes}>React is amazing</p>
+      {/*
       <button style={btnToggleStyle} onClick={togglePersonsHandler}>Toggle Persons</button>
-      
+      */}
+
+      <StyledToggleButton alt={showState} onClick={togglePersonsHandler}>
+        Toggle Persons
+      </StyledToggleButton>
+
       {personsDiv}
 
       <p>{otherState}</p>
 
+      {/* 
       <button style={btnStyle} onClick={buttonClickHandler}>Click me</button>
+      */}
+      <StyledButton onClick={buttonClickHandler}>
+        Click me
+      </StyledButton>
 
     </div>
     
