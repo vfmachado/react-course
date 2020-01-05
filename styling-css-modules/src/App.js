@@ -4,6 +4,7 @@ import styles from './App.module.css';
 
 import Person from './Person/Person';
 
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const App = (props) => {
 
@@ -72,14 +73,15 @@ const App = (props) => {
     return (
       <div>
         {personState.persons.map((person, index) => {
-          return <Person
-            key={person.id}
-            name={person.name}
-            age={person.age}
-            changeName={(event) => changeNameHandler(event, person.id)}
-            click={() => deletePersonHandler(index)}>
-            {person.hobbies}
-          </Person>
+          return <ErrorBoundary> key={person.id}
+              <Person
+                name={person.name}
+                age={person.age}
+                changeName={(event) => changeNameHandler(event, person.id)}
+                click={() => deletePersonHandler(index)}>
+                {person.hobbies}
+            </Person>
+          </ErrorBoundary>
         })}
 
       </div>
