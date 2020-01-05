@@ -3,7 +3,7 @@ import './App.css';
 
 import Person from './Person/Person';
 
-import Radium, {StyleRoot} from 'radium'
+//import Radium, {StyleRoot} from 'radium'
 
 const btnStyle = {
   backgroundColor: 'white',
@@ -120,8 +120,9 @@ const App = (props) => {
 
   let classes = ['red', 'bold'].join(' ');
 
+  //<StyleRoot> removed from div . the app doesn't use radium.
   return (
-    <StyleRoot>
+    
     <div className="App">
       {/*
       <Person name="Vinicius" age="28"></Person>
@@ -140,8 +141,9 @@ const App = (props) => {
       <button style={btnStyle} onClick={buttonClickHandler}>Click me</button>
 
     </div>
-    </StyleRoot>
+    
   );
 }
 
-export default Radium(App);
+//export default Radium(App);
+export default App;
