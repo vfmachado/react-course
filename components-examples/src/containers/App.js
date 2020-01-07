@@ -15,13 +15,15 @@ class App extends Component {
   state = {
     persons: [
       { id: 'id01', name: "Vinicius", age: 28 },
-      { id: 'id02', name: "Cristiana", age: "XX", hobbies: "Artesanato" },
+      { id: 'id02', name: "Cristiana", age: 42, hobbies: "Artesanato" },
       { id: 'id03', name: "Alexandre", age: 15, hobbies: "Vídeo games" }
     ],
     show: true
   };
 
 
+  //initialize the state of a component that updates based on props getted.
+  //update state based on external props.
   static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDerivedStateFromProps', props);
     return state;
